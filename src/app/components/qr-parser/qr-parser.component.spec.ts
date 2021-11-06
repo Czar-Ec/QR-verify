@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 import { QrParserComponent } from './qr-parser.component';
 
@@ -6,11 +8,18 @@ describe('QrParserComponent', () => {
   let component: QrParserComponent;
   let fixture: ComponentFixture<QrParserComponent>;
 
+  const activatedRouteStub = {
+    paramMap: of()
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QrParserComponent ]
+      declarations: [QrParserComponent],
+      providers: [
+        { provide: ActivatedRoute, useValue: activatedRouteStub }
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
