@@ -2,3 +2,42 @@
   height: 100%;
   width: 100%;
 }
+
+.app-frame {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-container {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.czarec-logo-footer {
+  display: flex;
+  flex-shrink: 1;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+
+  ::ng-deep .czarec-logo-button {
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+  }
+  
+  :ng-deep .czarec-logo-button .mat-icon {
+    font-size: 150px;
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+  }
+
+  :ng-deep .czarec-logo-button .mat-button-ripple {
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+  }
+}

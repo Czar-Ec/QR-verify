@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<div class="mat-typography app-frame mat-app-background" [class.dark-theme]="true" data-cy="application-container">
+  <div class="route-container">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="czarec-logo-footer">
+    <button mat-icon-button class="czarec-logo-button" (click)="goToMain()">
+      <mat-icon inline=true svgIcon="logo"></mat-icon>
+    </button>
+  </div>
+
+</div>
