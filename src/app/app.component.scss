@@ -1,6 +1,5 @@
 :host {
-  height: 100%;
-  width: 100%;
+  
 }
 
 .app-frame {
@@ -12,15 +11,36 @@
 .route-container {
   display: flex;
   flex: 1;
-  width: 100%;
+  padding: 15px;
 }
 
 .czarec-logo-footer {
   display: flex;
   flex-shrink: 1;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100px;
+
+  .footer-nav {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 10px;
+    width: 80%;
+  }
+
+  .footer-nav-button {
+    flex: 1;
+    margin: 20px;
+    padding-bottom: 20px;
+  }
+
+  ::ng-deep .footer-nav-icon {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    font-size: 50px;
+  }
 
   ::ng-deep .czarec-logo-button {
     height: 150px;

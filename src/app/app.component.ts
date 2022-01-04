@@ -18,6 +18,10 @@ export class AppComponent {
       `logo`,
       this.domSanitizer.bypassSecurityTrustResourceUrl(`https://raw.githubusercontent.com/Czar-Ec/Czar-Ec/master/assets/crescent.svg`)
     );
+    this.matIconRegistry.addSvgIcon(
+      `qr`,
+      this.domSanitizer.bypassSecurityTrustResourceUrl(`/assets/qr.svg`)
+    );
   }
 
   public goToMain() {
