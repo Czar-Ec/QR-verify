@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
+import { MaterialModule } from "src/app/modules/material.module";
 import { QrParserRoutingModule } from "./qr-parser-routing.module";
+import { QrService } from "./qr-service/qr.service";
 
 const components = [
 ]
@@ -12,8 +14,11 @@ const components = [
 
   ],
   imports: [
-    QrParserRoutingModule
+    QrParserRoutingModule,
+    MaterialModule
   ],
-  providers: []
+  providers: [
+    QrService
+  ]
 })
 export class QrParserModule { }
