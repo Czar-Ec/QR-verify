@@ -10,14 +10,6 @@ import { Guest } from './qr-data';
 @Injectable()
 export class QrService {
 
-  private _parsing = true;
-
-  get parsing() {
-    return this._parsing;
-  }
-
-  private parsedSubject = new Subject();
-
   constructor(
     private http: HttpClient
   ) { }

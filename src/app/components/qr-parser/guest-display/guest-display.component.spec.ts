@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CodeInputComponent } from './code-input.component';
+import { GuestDisplayComponent } from './guest-display.component';
 
-describe('CodeInputComponent', () => {
-  let component: CodeInputComponent;
-  let fixture: ComponentFixture<CodeInputComponent>;
+describe('GuestDisplayComponent', () => {
+  let component: GuestDisplayComponent;
+  let fixture: ComponentFixture<GuestDisplayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CodeInputComponent ]
+      declarations: [ GuestDisplayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CodeInputComponent);
+    fixture = TestBed.createComponent(GuestDisplayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

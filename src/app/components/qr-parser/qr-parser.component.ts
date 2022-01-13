@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 import { Guest } from './qr-service/qr-data';
 
 import { QrService } from './qr-service/qr.service';
@@ -14,17 +14,37 @@ export class QrParserComponent implements OnInit {
 
   public guests: Guest[] = []
 
+  public invalidCode = false;
+
+  public parsing = true;
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router,
     private qrService: QrService
   ) {
-    this.activatedRoute.queryParamMap.pipe(
-      switchMap((res: any) => this.qrService.validateInvite(res)),
-    ).subscribe((res: any) => this.guests = res, (err) => this.router.navigateByUrl('/code'))
   }
 
   ngOnInit(): void {
-  }
+    this.activatedRoute.queryParamMap.pipe(
+      switchMap((res: any) => {
+        this.invalidCode = false;
+        this.parsing = true;
+        return this.qrService.validateInvite(res)
+      }),
+    ).subscribe(
+      (res: any) => {
+        this.parsing = false;
+        // check if there are guests on that list
+        if (!res || !Array.isArray(res) || !res.length) {
+          this.invalidCode = true;
+        }
 
+        this.guests = res;
+      },
+      () => {
+        this.invalidCode = true;
+        this.parsing = false;
+      }
+    )
+  }
 }
