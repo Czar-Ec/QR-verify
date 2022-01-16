@@ -1,4 +1,56 @@
 :host {
-  height: 100%;
-  width: 100%;
+  
+}
+
+.app-frame {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.route-container {
+  display: flex;
+  flex: 1;
+  padding: 15px;
+}
+
+.czarec-logo-footer {
+  display: flex;
+  flex-shrink: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+
+  .footer-nav-button {
+    flex: 1;
+    margin: 20px;
+    padding-bottom: 20px;
+  }
+
+  ::ng-deep .footer-nav-icon {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    font-size: 50px;
+  }
+
+  ::ng-deep .czarec-logo-button {
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+  }
+  
+  :ng-deep .czarec-logo-button .mat-icon {
+    font-size: 150px;
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+  }
+
+  :ng-deep .czarec-logo-button .mat-button-ripple {
+    height: 150px;
+    width: 150px;
+    line-height: 150px;
+  }
 }

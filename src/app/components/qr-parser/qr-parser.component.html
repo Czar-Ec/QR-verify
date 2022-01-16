@@ -1,7 +1,54 @@
-<p>qr-parser works!</p>
-<p>qr-parser works!</p>
-<p>qr-parser works!</p>
-<p>qr-parser works!</p>
-<p>qr-parser works!</p>
-<p>qr-parser works!</p>
-<p>qr-parser works!</p>
+<div class="qr-parser-container">
+  <mat-card class="qr-parser-card">
+    <mat-card-title>
+      <ng-container *ngTemplateOutlet="parsing ? loadingTitleText : checkValidityTitleText"></ng-container>
+    </mat-card-title>
+    <mat-card-content>
+      <ng-container *ngTemplateOutlet="parsing ? loadingContainer : checkValidityContainer"></ng-container>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #loadingTitleText>
+  <div>Validating Invite...</div>
+</ng-template>
+
+<ng-template #checkValidityTitleText>
+  <ng-container *ngTemplateOutlet="invalidCode ? invalidTitleText : validTitleText"></ng-container>
+
+  <ng-template #validTitleText>
+    <h1 class="qr-parser-title">Valid Invite</h1>
+  </ng-template>
+
+  <ng-template #invalidTitleText>
+    <h1 class="qr-parser-title">Invalid Invite</h1>
+  </ng-template>
+</ng-template>
+
+<ng-template #loadingContainer>
+  <mat-spinner [diameter]="50"></mat-spinner>
+</ng-template>
+
+<ng-template #checkValidityContainer>
+  <ng-container *ngTemplateOutlet="invalidCode ? invalidContainer : validContainer"></ng-container>
+
+  <ng-template #validContainer>
+    <mat-icon class="qr-parser-icon valid-icon">check_circle</mat-icon>
+    <h3 class="valid-message">
+      This invite is valid for the following guests:
+    </h3>
+    <div class="guest-list">
+      <app-guest-display *ngFor="let guest of guests" [guest]="guest"></app-guest-display>
+    </div>
+  </ng-template>
+
+  <ng-template #invalidContainer>
+    <mat-icon class="qr-parser-icon invalid-icon">cancel</mat-icon>
+    <h3 class="invalid-message">
+      This invite is invalid.
+    </h3>
+    <div class="invalid-message">
+      Please contact the groom or bride.
+    </div>
+  </ng-template>
+</ng-template>
