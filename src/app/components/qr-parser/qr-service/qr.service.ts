@@ -1,16 +1,18 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import { catchError, filter, map } from 'rxjs/operators';
 
 import * as CryptoJs from 'crypto-js';
 
 import { Guest } from './qr-data';
+import { HASH_CONFIG } from 'src/app/app.tokens';
 
 @Injectable()
 export class QrService {
 
   constructor(
+    @Inject(HASH_CONFIG) private config: any,
     private http: HttpClient
   ) { }
 
@@ -41,10 +43,15 @@ export class QrService {
   private validateId(id: string, code: string): Observable<boolean> {
     const hash = CryptoJs.HmacSHA256(code, id).toString();
 
-    return this.http.get('/assets/test-data.json').pipe(
+    return this.http.get(this.config?.url).pipe(
       map((res: any) => {
-        return !!(res?.hashes.filter((storedHash: string) => !!(storedHash === hash))).length
-      })
+        // get the relevant list
+
+        const key = CryptoJs.HmacSHA256('wedding', this?.config?.key).toString();
+        return res[`${key}`];
+      }),
+      map((res: any[]) => !!(res?.filter((storedHash: string) => !!(storedHash === hash))).length),
+      catchError(() => [])
     )
   }
 
