@@ -20,16 +20,7 @@
   justify-content: center;
 }
 
-.mat-card-content {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  flex-direction: column;
-  min-width: 300px;
-
-  .qr-parser-icon {
+.qr-parser-icon {
     font-size: 50px;
     line-height: 50px;
     height: 50px;
@@ -37,21 +28,38 @@
     padding-bottom: 30px;
   }
 
-  .invalid-icon {
-    color: #800;
-  }
+.invalid-icon {
+  color: #800;
+}
 
-  .valid-icon {
-    color: #080;
-  }
+.valid-icon {
+  color: #080;
+}
 
-  .guest-list {
+.mat-card-title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mat-card-content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  flex-direction: column;
+  max-height: 70vh;
+  overflow-y: auto;
+
+  .item {
     padding-top: 20px;
     display: flex;
     flex: 1;
-    width: 80%;
+    width: 100%;
     flex-direction: column;
-    max-height: 50vh;
     overflow: auto;
   }
 }

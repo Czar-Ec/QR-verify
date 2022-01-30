@@ -2,6 +2,11 @@
   
 }
 
+.logo svg path {
+  fill: #70109A !important;
+  min-height: 300px;
+}
+
 .app-frame {
   height: 100vh;
   display: flex;

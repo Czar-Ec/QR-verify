@@ -5,15 +5,17 @@ import { QrParserRoutingModule } from "./qr-parser-routing.module";
 import { QrParserComponent } from "./qr-parser.component";
 import { QrService } from "./qr-service/qr.service";
 import { GuestDisplayComponent } from './guest-display/guest-display.component';
+import { FaqsComponent } from "./faqs/faqs.component";
 
 const components = [
-  QrParserComponent
+  QrParserComponent,
 ]
 
 @NgModule({
   declarations: [
     ...components,
-    GuestDisplayComponent
+    GuestDisplayComponent,
+    FaqsComponent
   ],
   exports: [
     ...components

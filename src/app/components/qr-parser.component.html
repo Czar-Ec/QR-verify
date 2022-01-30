@@ -18,10 +18,21 @@
 
   <ng-template #validTitleText>
     <h1 class="qr-parser-title">Valid Invite</h1>
+    <mat-icon class="qr-parser-icon valid-icon">check_circle</mat-icon>
+    <h3 class="valid-message">
+      This invite is valid for the following guests:
+    </h3>
   </ng-template>
 
   <ng-template #invalidTitleText>
     <h1 class="qr-parser-title">Invalid Invite</h1>
+    <mat-icon class="qr-parser-icon invalid-icon">cancel</mat-icon>
+    <h3 class="invalid-message">
+      This invite is invalid.
+    </h3>
+    <div class="invalid-message">
+      Please contact the groom or bride.
+    </div>
   </ng-template>
 </ng-template>
 
@@ -33,22 +44,13 @@
   <ng-container *ngTemplateOutlet="invalidCode ? invalidContainer : validContainer"></ng-container>
 
   <ng-template #validContainer>
-    <mat-icon class="qr-parser-icon valid-icon">check_circle</mat-icon>
-    <h3 class="valid-message">
-      This invite is valid for the following guests:
-    </h3>
-    <div class="guest-list">
+    <div class="item guest-list">
       <app-guest-display *ngFor="let guest of guests" [guest]="guest"></app-guest-display>
+    </div>
+    <div class="item faqs-list">
+      <app-faqs></app-faqs>
     </div>
   </ng-template>
 
-  <ng-template #invalidContainer>
-    <mat-icon class="qr-parser-icon invalid-icon">cancel</mat-icon>
-    <h3 class="invalid-message">
-      This invite is invalid.
-    </h3>
-    <div class="invalid-message">
-      Please contact the groom or bride.
-    </div>
-  </ng-template>
+  <ng-template #invalidContainer></ng-template>
 </ng-template>

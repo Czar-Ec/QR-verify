@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 const routes: Routes = [
   {
     path: 'qr',
-    loadChildren: () => import('./components/qr-parser/qr-parser.module').then(mod => mod.QrParserModule)
+    loadChildren: () => import('./components/qr-parser.module').then(mod => mod.QrParserModule)
   },
   { path: '**', redirectTo: 'qr' }
 ];
